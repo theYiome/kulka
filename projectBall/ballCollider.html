@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <html lang="pl-PL">
+    <title> Symulator zderzeń sprężystych kulek </title>
+    <meta name="author" content="Kamil Pasterczyk">
+    
+    <link href="https://fonts.googleapis.com/css?family=Bahiana&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous">
+    </script>
+    <script src="global.js"> </script>
+    <script src="classTimeManager.js"> </script>
+    <script src="classVector.js"> </script>
+    <script src="classBall.js"> </script>
+    <script src="classMouse.js"> </script>
+    <script src="coreFunctions.js"> </script>
+    <script src="ballBoxLogic.js"></script>
+    <script src="vectorBoxLogic.js"></script>
+    <script src="main.js"> </script>
+</head>
+
+<body onload="initialize()">
+    <div id="wrapper">
+<!-- output -->
+        <div id="introduction" class="pageBlock">
+            Profesjonalny symulator zderzeń doskonale sprężystych kulek
+        </div>
+<!-- drawable -->
+        <div id="drawable" class="pageBlock">
+            <div id="innerDrawable">
+                <canvas id="ballBox" onmouseout="onBallOut()" width="880" height="300" ></canvas>
+                <div style="margin-left: auto; margin-right: auto; display: table;">
+                    <input type="text" id="canvasWidth" value="880"> <input type="text" id="canvasHeight" value="300"> 
+                    <button type="button" onclick="resizePixelMap()">Zmień rozmiar</button>
+                    <button type="button" onclick="stopBalls()">Zatrzymaj kulki</button>  
+                    <button type="button" onclick="toggleBallsUpdate()">Zatrzymaj czas</button>    
+                    <button type="button" onclick="deleteBalls()">Usuń wszystkie kulki</button>
+                </div>
+            </div>
+        </div>
+<!-- panel -->
+        <div id="panel" class="pageBlock">
+            <div id="innerPanel">
+                <div id="vectorBox" onmouseout="onVectorOut()" onmouseover="onVectorOver()">
+                    <canvas id="vectorCanvas" width="305" height="305"> </canvas>
+                </div>
+                <div id="newBallBox">
+                    <div id="newBallBoxTitle">Kreator nowej kulki</div>
+                    <label for="xPosition">Pozycja w poziomie</label> <input type="text" id="xPosition"> 
+                    <label for="yPosition">Pozycja w pionie</label>   <input type="text" id="yPosition"><br>
+                    <label for="xVelocity">Prędkość pozioma</label>   <input type="text" id="xVelocity"> 
+                    <label for="yVelocity">Prędkość pionowa</label>   <input type="text" id="yVelocity"><br>
+                    <label for="mass">Masa</label>                    <input type="text" id="mass" value="32">         
+                    <label for="radius">Promień w pixelach</label>    <input type="text" id="radius" value="42"><br>
+                    <button type="button" onclick="newBall()" id="createNewBallButton">Stwórz nową kulkę</button>
+                </div>
+                </div>
+        </div>
+
+        <div class="pageBlock" style="background-color: darkgoldenrod;">
+            <a href="../default.php">Link</a>
+        </div>
+    </div>
+</body>
+
+</html>

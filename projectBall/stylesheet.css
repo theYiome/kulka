@@ -1,0 +1,145 @@
+body{
+    background-image: url("diagmonds2X.png");
+    font-size: 30px;
+    font-family: 'Bahiana';
+}
+
+canvas{
+    cursor: pointer;
+}
+
+label{
+    display: inline-block;
+    text-align: right;
+    width: 160px;
+}
+
+.pageBlock{
+    width: 100%;
+    margin-bottom: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 22px;
+    border-radius: 40px 65px 20px 55px;
+}
+
+#wrapper{
+    max-width: 1440px;
+    min-width: 600px;
+    min-height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#introduction{
+    color: rgba(119, 46, 69, 1);
+    font-size: 54px;
+    text-align: center;
+    background-color: gold;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#drawable{
+    user-select: none;
+    background-color: rgba(0, 66, 99, 0.8);
+}
+
+#innerDrawable{
+    border: 3px solid gold;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(119, 46, 69, 1);
+    padding: 34px;
+    display: table;
+    border-radius: 20px;
+}
+
+#ballBox{
+    border: 6px solid white;
+    border-radius: 12px;
+}
+
+#panel{
+    user-select: none;
+    background-color: rgba(119, 46, 69, 1);
+    overflow: hidden;
+}
+
+#innerPanel{
+    margin-left: auto;
+    margin-right: auto;
+    width: 941px;
+}
+
+#vectorBox{
+    border: 3px solid gold;
+    margin-right: 20px;
+    background-color: rgba(0, 66, 99, 0.2);
+    float: left;
+    border-radius: 12px;
+}
+
+#newBallBox {
+    font-size: 30px;
+    line-height: 1.7em;
+    box-sizing: border-box;
+    min-height: 316px;
+    border-radius: 12px;
+    border: 3px solid gold;
+    color: white;
+    padding: 4px;
+    margin-left: 20px;
+    background-color: rgba(0, 66, 99, 0.2);
+    float: left;
+    width: 590px;
+}
+
+#newBallBoxTitle{
+    color: gold;
+    font-size: 44px;
+    text-align: center;
+}
+
+input[type=text]{
+    outline: none;
+    background-color: rgba(0, 66, 99, 0.8);
+    color: gold;
+    border: 1px solid gold;
+    border-radius: 10px;
+    font-size: 32px;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 5px;
+    padding: 3px;
+    width: 90px;
+}
+
+input[type=text]:focus , button:focus{
+    background-color: rgba(100, 0, 0, 0.4);
+}
+
+button:hover:not(:focus) , input[type=text]:hover:not(:focus){
+    background-color: rgba(29, 66, 199, 0.6);
+}
+
+button{
+    outline: none;
+    background-color: rgba(0, 66, 99, 0.8);
+    color: goldenrod;
+    border: 1px solid gold;
+    border-radius: 10px;
+    font-size: 32px;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+}
+
+#createNewBallButton{
+    width: 300px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

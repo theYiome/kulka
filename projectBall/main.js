@@ -24,12 +24,12 @@ function mainLoop(){
     elapsedTime = timeManager.update();
     renderContext2D.clearRect(0, 0, canvas.width, canvas.height);
     ballBoxLogic.update();
-    for(var a = 0; a < ballArray.length; a++){
+    for(let a = 0; a < ballArray.length; a++){
         // Checking for collisions
-        for(var b = a + 1; b < ballArray.length; b++){
-            var futurePosition_a = Vector.getAdd(ballArray[a].position, Vector.getMultiply(ballArray[a].velocity, elapsedTime));
-            var futurePosition_b = Vector.getAdd(ballArray[b].position, Vector.getMultiply(ballArray[b].velocity, elapsedTime));
-            if(Vector.getDistance(ballArray[a].position, ballArray[b].position) <  ballArray[a].radius + ballArray[b].radius) Ball.ball_collision(ballArray[a], ballArray[b]);
+        for (let b = a + 1; b < ballArray.length; b++){
+            const radiusSum = ballArray[a].radius + ballArray[b].radius;
+            const currentDistance = Vector.getDistance(ballArray[a].position, ballArray[b].position);
+            if (currentDistance < radiusSum) Ball.ball_collision(ballArray[a], ballArray[b]);
         }
         // Ball calculations HERE
         Ball.wall_collision(ballArray[a], elapsedTime);

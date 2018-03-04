@@ -42,7 +42,7 @@ class Vector{
         return new Vector(vectorA.x - vectorB.x, vectorA.y - vectorB.y);
     }
 
-    static getMultiply(vectorA, multipler){
+    static getMultiply(vectorA, multipler) { //order matters
         return new Vector(vectorA.x * multipler, vectorA.y * multipler);
     }
 
@@ -53,13 +53,9 @@ class Vector{
     static getDistance(vectorA, vectorB){
         return Vector.getSubtract(vectorA, vectorB).getLength();
     }
-    /* NOT TESTED!
-    static getCrossProduct(vectorA, vectorB){
-        return (vectorA.x * vectorB.x) + (vectorA.y + vectorB.y);
+
+    static getDotProduct(vectorA, vectorB){
+        return (vectorA.x * vectorB.x) + (vectorA.y * vectorB.y);
     }
 
-    static getCosAngle(vectorA, vectorB){
-        return getCrossProduct(vectorA, vectorB)/(vectorA.getLength() + vectorB.getLength());
-    }
-    */
 }

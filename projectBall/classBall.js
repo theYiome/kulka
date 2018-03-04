@@ -19,31 +19,57 @@ class Ball{
         this.position.setAdd(Vector.getMultiply(this.velocity, elapsed_time));
     }
 
-    static wall_collision(A, elapsed_time){
-        var future_position = new Vector(A.position.x + (A.velocity.x * elapsed_time), A.position.y + (A.velocity.y * elapsed_time));           
-        if(future_position.y > canvas.height - A.radius || future_position.y < 0 + A.radius) A.velocity.y = -(A.velocity.y);
-        if(future_position.x > canvas.width  - A.radius || future_position.x < 0 + A.radius) A.velocity.x = -(A.velocity.x);
+    static wall_collision(A, elapsed_time) {
+        const radius = A.radius;
+        if (A.position.x - radius < 0) {
+            A.position.x = radius;
+            A.velocity.x = -(A.velocity.x)
+        }
+        if (A.position.y - radius < 0){
+            A.position.y = radius;
+            A.velocity.y = -(A.velocity.y)
+        }
+        if (A.position.x + radius > canvas.width){
+            A.position.x = canvas.width - radius;
+            A.velocity.x = -(A.velocity.x)
+        }
+        if (A.position.y + radius > canvas.height){
+            A.position.y = canvas.height - radius;
+            A.velocity.y = -(A.velocity.y)
+        }
     }
 
-static ball_collision(A, B){
-        let m1 = A.mass;
-        let m2 = B.mass;
-        let v1 = A.velocity.getLength();
-        let v2 = B.velocity.getLength();
-        let θ1 = Math.atan2(A.velocity.y, A.velocity.x);
-        let θ2 = Math.atan2(B.velocity.y, B.velocity.x);
-        let φ  = Math.PI + Math.atan2(Math.abs(A.position.x - B.position.x), Math.abs(A.position.y - B.position.y));
+    static ball_collision(A, B){
+        const m1 = A.mass;
+        const m2 = B.mass;
+        let x1 = A.position;
+        let x2 = B.position;
+        // Position correction
+        let xH = Vector.getSubtract(x2, x1);
+        if (xH.getLength() < 0.00001) { // To avoid dividing by zero
+            A.position.x = x1.x = x1.x + Math.random();
+            A.position.y = x1.y = x1.y + Math.random();
+            xH = Vector.getSubtract(x2, x1);
+        }
+        const k = (A.radius + B.radius) / xH.getLength();
+        const displacement = Vector.getMultiply(xH, k - 1);
 
-        A.velocity.x = ((v1*Math.cos(θ1-φ)*(m1-m2) + 2*m2*v2*Math.cos(θ2-φ))/(m1+m2))*Math.cos(φ) 
-        + v1*Math.sin(θ1-φ)*Math.cos(φ + (Math.PI/2));
+        A.position = x1 = Vector.getSubtract(x1, Vector.getMultiply(displacement, m2 / (m1 + m2)));
+        B.position = x2 = Vector.getAdd(x2, Vector.getMultiply(displacement, m1 / (m1 + m2)));
+        // New velocity calculation 
+        const v1 = A.velocity;
+        const v2 = B.velocity;
 
-        A.velocity.y = ((v1*Math.cos(θ1-φ)*(m1-m2) + 2*m2*v2*Math.cos(θ2-φ))/(m1+m2))*Math.sin(φ) 
-        + v1*Math.sin(θ1-φ)*Math.sin(φ + (Math.PI/2));
+        const v1_componentA = ((2 * m2) / (m1 + m2));
+        const v1_componentB = Vector.getDotProduct(Vector.getSubtract(v1, v2), Vector.getSubtract(x1, x2)) / Math.pow(Vector.getSubtract(x1, x2).getLength(), 2);
+        const v1_new = Vector.getSubtract(v1, Vector.getMultiply(Vector.getSubtract(x1, x2), v1_componentA * v1_componentB));
 
-        B.velocity.x = ((v2*Math.cos(θ2-φ)*(m2-m1) + 2*m1*v1*Math.cos(θ1-φ))/(m2+m1))*Math.cos(φ)
-        + v2*Math.sin(θ2-φ)*Math.cos(φ + (Math.PI/2));
+        const v2_componentA = ((2 * m1) / (m1 + m2));
+        const v2_componentB = Vector.getDotProduct(Vector.getSubtract(v2, v1), Vector.getSubtract(x2, x1)) / Math.pow(Vector.getSubtract(x2, x1).getLength(), 2);
+        const v2_new = Vector.getSubtract(v2, Vector.getMultiply(Vector.getSubtract(x2, x1), v2_componentA * v2_componentB));
 
-        B.velocity.y = ((v2*Math.cos(θ2-φ)*(m2-m1) + 2*m1*v1*Math.cos(θ1-φ))/(m2+m1))*Math.sin(φ)
-        + v2*Math.sin(θ2-φ)*Math.sin(φ + (Math.PI/2));
+        A.velocity = v1_new;
+        B.velocity = v2_new;
+        return;
     }
 }

@@ -20,10 +20,6 @@ function newBall(){
     var yVelocity = +document.getElementById("yVelocity").value;
     var mass      = +document.getElementById("mass").value;
     var radius    = +document.getElementById("radius").value;
-    if(xPosition - radius < 0) xPosition = radius;
-    if(yPosition - radius < 0) yPosition = radius;
-    if(xPosition + radius > canvas.width)  xPosition = canvas.width - radius;
-    if(yPosition + radius > canvas.height) yPosition = canvas.height - radius;
     var color     = "rgb(255,255,255)";
     ballArray.push(new Ball(new Vector(xPosition, yPosition), new Vector(xVelocity, yVelocity), mass, radius, color));
 }
@@ -40,11 +36,4 @@ function resizePixelMap(){
         document.getElementById("canvasHeight").value = 10000;
     }
     $('#innerDrawable').css('width', canvas.width + "px");
-    for(var i = 0; i < ballArray.length; i++){
-        var radius = ballArray[i].radius;
-        if(ballArray[i].position.x - radius < 0) ballArray[i].position.x = radius;
-        if(ballArray[i].position.y - radius < 0) ballArray[i].position.y = radius;
-        if(ballArray[i].position.x + radius > canvas.width)  ballArray[i].position.x = canvas.width - radius;
-        if(ballArray[i].position.y + radius > canvas.height) ballArray[i].position.y = canvas.height - radius;
-    }
 }

@@ -30,7 +30,7 @@
     <div id="wrapper">
 <!-- output -->
         <div id="introduction" class="pageBlock">
-            Profesjonalny symulator zderzeń doskonale sprężystych kulek
+            perfectly elastic collisions - Simulation
         </div>
 <!-- drawable -->
         <div id="drawable" class="pageBlock">
@@ -38,10 +38,10 @@
                 <canvas id="ballBox" onmouseout="onBallOut()" width="880" height="300" ></canvas>
                 <div style="margin-left: auto; margin-right: auto; display: table;">
                     <input type="text" id="canvasWidth" value="880"> <input type="text" id="canvasHeight" value="300"> 
-                    <button type="button" onclick="resizePixelMap()">Zmień rozmiar</button>
-                    <button type="button" onclick="stopBalls()">Zatrzymaj kulki</button>  
-                    <button type="button" onclick="toggleBallsUpdate()">Zatrzymaj czas</button>    
-                    <button type="button" onclick="deleteBalls()">Usuń wszystkie kulki</button>
+                    <button type="button" onclick="resizePixelMap()">change size</button>
+                    <button type="button" onclick="stopBalls()">stop balls</button>  
+                    <button type="button" onclick="toggleBallsUpdate()">stop time</button>    
+                    <button type="button" onclick="deleteBalls()">delete ALL balls</button>
                 </div>
             </div>
         </div>
@@ -52,19 +52,25 @@
                     <canvas id="vectorCanvas" width="305" height="305"> </canvas>
                 </div>
                 <div id="newBallBox">
-                    <div id="newBallBoxTitle">Kreator nowej kulki</div>
-                    <label for="xPosition">Pozycja w poziomie</label> <input type="text" id="xPosition"> 
-                    <label for="yPosition">Pozycja w pionie</label>   <input type="text" id="yPosition"><br>
-                    <label for="xVelocity">Prędkość pozioma</label>   <input type="text" id="xVelocity"> 
-                    <label for="yVelocity">Prędkość pionowa</label>   <input type="text" id="yVelocity"><br>
-                    <label for="mass">Masa</label>                    <input type="text" id="mass" value="32">         
-                    <label for="radius">Promień w pixelach</label>    <input type="text" id="radius" value="42"><br>
-                    <button type="button" onclick="newBall()" id="createNewBallButton">Stwórz nową kulkę</button>
+                    <div id="newBallBoxTitle">new ball creator</div>
+                    <label for="xPosition">x position</label> <input type="text" id="xPosition"> 
+                    <label for="yPosition">y position</label>   <input type="text" id="yPosition"><br>
+                    <label for="xVelocity">x velocity</label>   <input type="text" id="xVelocity"> 
+                    <label for="yVelocity">y velocity</label>   <input type="text" id="yVelocity"><br>
+                    <label for="mass">mass</label>                    <input type="text" id="mass" value="32">         
+                    <label for="radius">radius in pixels</label>    <input type="text" id="radius" value="42"><br>
+                    <button type="button" onclick="newBall()" id="createNewBallButton">CREATE new ball</button>
                 </div>
                 </div>
         </div>
 
-        <a href="../default.php" style="font-size: 32px;">
+        <div id="panel" class="pageBlock" style="color: gold;">
+            You can drag and drop balls<br>
+            You can pick position by a mouse click<br>
+            You can pick velocity by clicking on velocity square<br>
+        </div>
+
+        <a href="" style="font-size: 32px;">
             <div class="block shadow-2" style="user-select: none; color: black; background-color: white;">
                 <img class="shadow-2" src="yiome1024a.png" style="width: 32px; height: 32px; margin-right: 16px">
                 © 2018 Kamil Pasterczyk

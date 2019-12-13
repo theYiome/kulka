@@ -37,6 +37,9 @@
         
         <!-- introduction -->
         <article>
+            <h1>
+                <div class="pageBlock panel">Poniżej znajduje się instrukcja obsługi</div>
+            </h1>
             <div class="pageBlock panel">
                 Piłki możesz łapać za pomocą myszki lub ekranu dotykowego i w ten sposób:
                 <ul>
@@ -54,41 +57,37 @@
         </article>
 
         <!-- drawable -->
-        <article>
-            <div id="drawable" class="pageBlock">
-                <div id="innerDrawable">
-                    <canvas id="ballBox" onmouseout="onBallOut()" width="880" height="300" ></canvas>
-                    <div style="margin-left: auto; margin-right: auto; display: table;">
-                        <input type="text" id="canvasWidth" value="880"> <input type="text" id="canvasHeight" value="300"> 
-                        <button type="button" onclick="resizePixelMap()">zmień rozmiar</button>
-                        <button type="button" onclick="stopBalls()">zatrzymaj piłki</button>  
-                        <button id="timebutton" type="button" onclick="toggleBallsUpdate()">zatrzymaj czas</button>    
-                        <button type="button" onclick="deleteBalls()">usuń wszystkie piłki</button>
-                    </div>
+        <div id="drawable" class="pageBlock">
+            <div id="innerDrawable">
+                <canvas id="ballBox" onmouseout="onBallOut()" width="880" height="300" ></canvas>
+                <div style="margin-left: auto; margin-right: auto; display: table;">
+                    <input type="text" id="canvasWidth" value="880"> <input type="text" id="canvasHeight" value="300"> 
+                    <button type="button" onclick="resizePixelMap()">zmień rozmiar</button>
+                    <button type="button" onclick="stopBalls()">zatrzymaj piłki</button>  
+                    <button id="timebutton" type="button" onclick="toggleBallsUpdate()">zatrzymaj czas</button>    
+                    <button type="button" onclick="deleteBalls()">usuń wszystkie piłki</button>
                 </div>
             </div>
-        </article>
+        </div>
         
         <!-- panel -->
-        <article>
-            <div class="pageBlock panel">
-                <div id="innerPanel">
-                    <div id="vectorBox" onmouseout="onVectorOut()" onmouseover="onVectorOver()">
-                        <canvas id="vectorCanvas" width="305" height="305"> </canvas>
-                    </div>
-                    <div id="newBallBox">
-                        <div id="newBallBoxTitle">kreator nowych piłek</div>
-                        <label for="xPosition">pozycja x</label> <input type="text" id="xPosition"> 
-                        <label for="yPosition">pozycja y</label>   <input type="text" id="yPosition"><br>
-                        <label for="xVelocity">prędkość x</label>   <input type="text" id="xVelocity"> 
-                        <label for="yVelocity">prędkość y</label>   <input type="text" id="yVelocity"><br>
-                        <label for="mass">masa</label>                    <input type="text" id="mass" value="32">         
-                        <label for="radius">promień w pixelach</label>    <input type="text" id="radius" value="42"><br>
-                        <button type="button" onclick="newBall()" id="createNewBallButton">stwórz nową piłkę</button>
-                    </div>
+        <div class="pageBlock panel">
+            <div id="innerPanel">
+                <div id="vectorBox" onmouseout="onVectorOut()" onmouseover="onVectorOver()">
+                    <canvas id="vectorCanvas" width="305" height="305"> </canvas>
+                </div>
+                <div id="newBallBox">
+                    <div id="newBallBoxTitle">kreator nowych piłek</div>
+                    <label for="xPosition">pozycja x</label> <input type="text" id="xPosition"> 
+                    <label for="yPosition">pozycja y</label>   <input type="text" id="yPosition"><br>
+                    <label for="xVelocity">prędkość x</label>   <input type="text" id="xVelocity"> 
+                    <label for="yVelocity">prędkość y</label>   <input type="text" id="yVelocity"><br>
+                    <label for="mass">masa</label>                    <input type="text" id="mass" value="32">         
+                    <label for="radius">promień w pixelach</label>    <input type="text" id="radius" value="42"><br>
+                    <button type="button" onclick="newBall()" id="createNewBallButton">stwórz nową piłkę</button>
                 </div>
             </div>
-        </article>
+        </div>
     <!-- koniec wrapera -->
     </div>
 </body>

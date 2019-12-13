@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Symulator Zderzeń Sprężystych</title>
+    <meta name="author" content="Kamil Pasterczyk">
+    
+    <link href="https://fonts.googleapis.com/css?family=Bahiana&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
+
+    <!-- to jest jquery dystrybuowane oficjalnie -->
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="js/global.js"> </script>
+    <script src="js/classTimeManager.js"> </script>
+    <script src="js/classVector.js"> </script>
+    <script src="js/classBall.js"> </script>
+    <script src="js/classMouse.js"> </script>
+    <script src="js/coreFunctions.js"> </script>
+    <script src="js/ballBoxLogic.js"></script>
+    <script src="js/vectorBoxLogic.js"></script>
+    <script src="js/main.js"> </script>
+</head>
+
+<body onload="initialize()">
+    <div id="wrapper">
+        <!-- output -->
+        <header>
+            <div id="introduction" class="pageBlock">
+                Symulator Zderzeń Sprężystych
+            </div>
+        </header>
+        
+        <!-- introduction -->
+        <article>
+            <div id="panel" class="pageBlock">
+                Piłki możesz łapać za pomocą myszki lub ekranu dotykowego i w ten sposób:
+                <ul>
+                    <li>zatrzymywać</li>
+                    <li>przemieszczać </li>
+                    <li>rzucać</li>
+                </ul>
+            </div>
+            <div id="panel" class="pageBlock">
+                Możesz wybrać pozycję w której pojawi się piłka (uzupełnić pozycję x oraz y w kreatorze) klikając w dowolnym miejscu w pudełku z piłkami
+            </div>
+            <div id="panel" class="pageBlock">
+                możesz wybrać prętkość z jaką piłka zostanie stworzona klikając na pudełko wyboru prędkości po lewej od kreatora piłek
+            </div>
+        </article>
+
+        <!-- drawable -->
+        <article>
+            <div id="drawable" class="pageBlock">
+                <div id="innerDrawable">
+                    <canvas id="ballBox" onmouseout="onBallOut()" width="880" height="300" ></canvas>
+                    <div style="margin-left: auto; margin-right: auto; display: table;">
+                        <input type="text" id="canvasWidth" value="880"> <input type="text" id="canvasHeight" value="300"> 
+                        <button type="button" onclick="resizePixelMap()">zmień rozmiar</button>
+                        <button type="button" onclick="stopBalls()">zatrzymaj piłki</button>  
+                        <button id="timebutton" type="button" onclick="toggleBallsUpdate()">zatrzymaj czas</button>    
+                        <button type="button" onclick="deleteBalls()">usuń wszystkie piłki</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- panel -->
+        <article>
+            <div id="panel" class="pageBlock">
+                <div id="innerPanel">
+                    <div id="vectorBox" onmouseout="onVectorOut()" onmouseover="onVectorOver()">
+                        <canvas id="vectorCanvas" width="305" height="305"> </canvas>
+                    </div>
+                    <div id="newBallBox">
+                        <div id="newBallBoxTitle">kreator nowych piłek</div>
+                        <label for="xPosition">pozycja x</label> <input type="text" id="xPosition"> 
+                        <label for="yPosition">pozycja y</label>   <input type="text" id="yPosition"><br>
+                        <label for="xVelocity">prędkość x</label>   <input type="text" id="xVelocity"> 
+                        <label for="yVelocity">prędkość y</label>   <input type="text" id="yVelocity"><br>
+                        <label for="mass">masa</label>                    <input type="text" id="mass" value="32">         
+                        <label for="radius">promień w pixelach</label>    <input type="text" id="radius" value="42"><br>
+                        <button type="button" onclick="newBall()" id="createNewBallButton">stwórz nową piłkę</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    <!-- koniec wrapera -->
+    </div>
+</body>
+
+</html>
